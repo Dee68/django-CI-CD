@@ -35,7 +35,7 @@ jobs:
   deploy_to_heroku:
     needs: build
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main' && job.status == 'success'
+    if: github.ref == 'refs/heads/main' && success()
     steps:
       - name: Deploy to Heroku
         env:
