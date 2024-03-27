@@ -10,3 +10,4 @@ packaging==24.0
 pluggy==1.4.0
 pytest==8.1.1
 Werkzeug==3.0.1
+gunicorn
