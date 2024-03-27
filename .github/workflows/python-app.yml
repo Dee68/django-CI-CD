@@ -37,11 +37,7 @@ jobs:
     if: github.ref == 'refs/heads/main' && success()
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
-      - name: Set Git default branch
-        run: |
-          git push heroku main
-      
+        uses: actions/checkout@v2 
       - name: Deploy to Heroku
         env:
           HEROKU_API_TOKEN: ${{ secrets.HEROKU_API_TOKEN }}
