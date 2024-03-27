@@ -41,5 +41,9 @@ jobs:
           HEROKU_API_TOKEN: ${{ secrets.HEROKU_API_TOKEN }}
           HEROKU_APP_NAME: ${{ secrets.HEROKU_APP_NAME }}
         run: |
-          git remote add heroku https://heroku:$HEROKU_API_TOKEN@git.heroku.com/django-ci-cd.git
+          cd $GITHUB_WORKSPACE  # Change to the workspace directory
+          if [ ! -d ".git" ]; then  # Check if a Git repository exists
+            git init  # Initialize a new Git repository if not already initialized
+          fi
+          git remote add heroku https://heroku:$HEROKU_API_TOKEN@git.heroku.com/$HEROKU_APP_NAME.git
           git push heroku HEAD:master -f
