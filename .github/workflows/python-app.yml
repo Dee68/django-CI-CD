@@ -36,6 +36,13 @@ jobs:
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main' && success()
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      
+    - name: Configure Git user
+      run: |
+        git config --global user.email "ddimie283@gmail.com"
+        git config --global user.name "Dee68"
       - name: Deploy to Heroku
         env:
           HEROKU_API_TOKEN: ${{ secrets.HEROKU_API_TOKEN }}
