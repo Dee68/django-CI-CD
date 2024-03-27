@@ -45,5 +45,7 @@ jobs:
           if [ ! -d ".git" ]; then  # Check if a Git repository exists
             git init  # Initialize a new Git repository if not already initialized
           fi
+          git add .  # Add all changes to the staging area
+          git commit -m "Initial commit" || true  # Commit changes. Using '|| true' to ignore failure if there are no changes to commit
           git remote add heroku https://0859f86c-57fe-422a-a72c-a8b352d6b729@git.heroku.com/django-ci-cd.git
           git push heroku HEAD:master -f
